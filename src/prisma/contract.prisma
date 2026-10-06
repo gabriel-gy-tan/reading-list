@@ -1,0 +1,18 @@
+// use prisma-8
+model Book {
+  id        Int     @id @default(autoincrement())
+  title     String
+  author    String
+  description     String
+  status    String
+  chapters      Chapter[]
+}
+
+model Chapter {
+  id       Int     @id @default(autoincrement())
+  chapterNumber Int
+  title     String?
+  review   String?
+  bookId    Int
+  book      Book    @relation(fields: [bookId], references: [id])
+}
